@@ -1,39 +1,18 @@
 import { useQuery } from '@tanstack/react-query'
-import axios from "axios"
+import { client } from '../utils/axios-utils'
 
 
-
-type checkerObject ={
-    name: string,
-    mappedItem: string
-    mappedSubItem: string,
-    isRequired: boolean,
-    type: string[],
-    options: null,
-    isGroupable: boolean
-}
-
-const fetchData = async ()=>{
-    return await axios.get("http://localhost:4000/data")
-}
-const fetchChecker = async ()=>{
-    return await axios.get("http://localhost:4000/checker")
-}
-
-
+const tableDataKey = ()=>["table-data"]
+const mappingDataKey = ()=>["table-data"]
 
 
 export const useGetData = ()=>{
-    return useQuery({queryKey: ["analysis-data"], queryFn: fetchData,
-                select: (data)=>(data.data.dataframe)
+    return useQuery({queryKey: tableDataKey(), queryFn: ()=>client.get('/dataset'),
 })
 }
 
 export const  useGetChecker = ()=>{
-    return useQuery({queryKey: ["checker"], queryFn: fetchChecker ,
-                    select: (data)=>(data.data.filter((item: checkerObject)=>item.mappedItem !==""))
+    return useQuery({queryKey: mappingDataKey(), queryFn: ()=>client.get('/mappingData'),
 })
-
-
 }
 

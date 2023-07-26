@@ -1,5 +1,5 @@
 {
-    "checker":  [
+    "mappingData":  [
         {
             "name": "id",
             "mappedItem": "id",
@@ -130,7 +130,9 @@
         }
     ],
 
-    "data" : {
+
+    
+"dataset" : {
         "metadata": [
             {"name": "id", "type": "Number"},
             {"name": "dose", "type": "Number"},

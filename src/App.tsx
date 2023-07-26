@@ -6,7 +6,6 @@ function App() {
   return (
     <Stack className="App" alignItems="center" justifyContent="center">
       <AnalysisTable/>
-
     </Stack>
   );
 }
